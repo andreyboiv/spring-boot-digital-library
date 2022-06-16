@@ -13,9 +13,6 @@ Datenbank: PostgreSQL
 1. Spring Boot DevTools
 2. Spring Web
 3. Spring Data JPA
-4. Spring Security
-5. Spring AOP
-6. Spring Validation
-7. MySQL Driver
-8. Lombok
-9. Maven
+4. MySQL Driver
+5. Lombok
+6. Maven
