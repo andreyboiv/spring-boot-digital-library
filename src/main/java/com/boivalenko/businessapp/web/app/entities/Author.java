@@ -1,6 +1,7 @@
 package com.boivalenko.businessapp.web.app.entities;
 
 import com.boivalenko.businessapp.web.app.entities.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class Author extends BaseEntity {
     @Column(name = "birthday", nullable = false)
     private Date birthday;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<Book> books;
 
