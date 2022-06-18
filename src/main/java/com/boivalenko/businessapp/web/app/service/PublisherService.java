@@ -94,4 +94,13 @@ public class PublisherService implements IBaseService<Publisher> {
         }
         return ResponseEntity.ok(all);
     }
+
+    public ResponseEntity<List<Publisher>> findPublishersByNameContainingIgnoreCaseOrderByNameAsc(String name) {
+        List<Publisher> all = this.publisherRepository.findPublishersByNameContainingIgnoreCaseOrderByNameAsc(name);
+        if (all == null || all.isEmpty()) {
+            return new ResponseEntity("gar kein Publisher vorhanden",
+                    HttpStatus.OK);
+        }
+        return ResponseEntity.ok(all);
+    }
 }

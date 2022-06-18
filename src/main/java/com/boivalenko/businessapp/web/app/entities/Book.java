@@ -1,6 +1,6 @@
 package com.boivalenko.businessapp.web.app.entities;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +16,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @Table(name = "book")
-@AllArgsConstructor
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
@@ -32,11 +31,31 @@ public class Book implements Serializable {
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "image", nullable = true)
     @Lob
+    @JsonIgnore
     private byte[] image;
 
     public Book(Long id, byte[] image) {
         this.id = id;
         this.image = image;
+    }
+
+    // Hier wird das Field "content" nicht ausgefüllt.
+    // Denn das kann System belasten
+    public Book(Long id, byte[] image, String name, Integer pageCount, String isbn, Integer publishYear, Integer avgRating, Long totalVoteCount, Long totalRating, Long viewCount, String descr, Genre genre, Author author, Publisher publisher) {
+        this.id = id;
+        this.image = image;
+        this.name = name;
+        this.pageCount = pageCount;
+        this.isbn = isbn;
+        this.publishYear = publishYear;
+        this.avgRating = avgRating;
+        this.totalVoteCount = totalVoteCount;
+        this.totalRating = totalRating;
+        this.viewCount = viewCount;
+        this.descr = descr;
+        this.genre = genre;
+        this.author = author;
+        this.publisher = publisher;
     }
 
     @Basic
@@ -46,6 +65,7 @@ public class Book implements Serializable {
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "content", nullable = true)
     @Lob
+    @JsonIgnore
     private byte[] content;
 
     @Basic
@@ -82,14 +102,17 @@ public class Book implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
+    @JsonIgnore
     private Genre genre;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
+    @JsonIgnore
     private Author author;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
+    @JsonIgnore
     private Publisher publisher;
 
     @Override

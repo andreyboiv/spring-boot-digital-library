@@ -94,4 +94,22 @@ public class BookService implements IBaseService<Book> {
         }
         return ResponseEntity.ok(all);
     }
+
+    public ResponseEntity<List<Book>> findBooksByNameOrAuthorNameOrderByName(String bookTitel, String authorName) {
+
+        if (bookTitel == null || bookTitel.trim().equals("")) {
+            bookTitel = null;
+        }
+
+        if (authorName == null || authorName.trim().equals("")) {
+            authorName = null;
+        }
+
+        List<Book> all = this.bookRepository.findBooksByNameContainingIgnoreCaseOrAuthorNameContainingIgnoreCaseOrderByName(bookTitel, authorName);
+        if (all == null || all.isEmpty()) {
+            return new ResponseEntity("gar kein Book vorhanden",
+                    HttpStatus.OK);
+        }
+        return ResponseEntity.ok(all);
+    }
 }

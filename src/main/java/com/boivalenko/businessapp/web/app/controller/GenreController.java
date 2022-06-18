@@ -40,4 +40,9 @@ public class GenreController {
         return this.genreService.findAll();
     }
 
+    @PostMapping("/findGenresByNameContainingIgnoreCaseOrderByNameAsc")
+    public ResponseEntity<List<Genre>> findGenresByNameContainingIgnoreCase(@RequestBody String name) {
+        return this.genreService.findGenresByNameContainingIgnoreCaseOrderByNameAsc(name);
+    }
+
 }

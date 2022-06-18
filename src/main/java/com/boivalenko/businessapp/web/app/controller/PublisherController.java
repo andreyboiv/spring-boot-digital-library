@@ -40,4 +40,8 @@ public class PublisherController {
         return this.publisherService.findAll();
     }
 
+    @PostMapping("/findPublishersByNameContainingIgnoreCaseOrderByNameAsc")
+    public ResponseEntity<List<Publisher>> findPublishersByNameContainingIgnoreCaseOrderByNameAsc(@RequestBody String name) {
+        return this.publisherService.findPublishersByNameContainingIgnoreCaseOrderByNameAsc(name);
+    }
 }

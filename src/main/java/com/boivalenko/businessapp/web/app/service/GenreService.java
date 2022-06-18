@@ -94,4 +94,13 @@ public class GenreService implements IBaseService<Genre> {
         }
         return ResponseEntity.ok(all);
     }
+
+    public ResponseEntity<List<Genre>> findGenresByNameContainingIgnoreCaseOrderByNameAsc(String name) {
+        List<Genre> all = this.genreRepository.findGenresByNameContainingIgnoreCaseOrderByNameAsc(name);
+        if (all == null || all.isEmpty()) {
+            return new ResponseEntity("gar kein Genre vorhanden",
+                    HttpStatus.OK);
+        }
+        return ResponseEntity.ok(all);
+    }
 }
