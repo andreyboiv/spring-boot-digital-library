@@ -1,6 +1,7 @@
-package com.boivalenko.businessapp.web.app.entities;
+package com.boivalenko.businessapp.web.app.spring.entities;
 
-import com.boivalenko.businessapp.web.app.entities.base.BaseEntity;
+import com.boivalenko.businessapp.web.app.spring.entities.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,29 +11,26 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "vote")
+@Table(name = "genre")
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
 @Cacheable(value = true)
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Vote extends BaseEntity {
+public class Genre extends BaseEntity {
 
     @Basic
-    @Column(name = "value", nullable = true)
-    private Integer value;
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
 
-    @Basic
-    @Column(name = "book_id", nullable = false)
-    private Long bookId;
-
-    @Basic
-    @Column(name = "username", nullable = false, length = 100)
-    private String username;
+    @JsonIgnore
+    @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
+    private List<Book> books;
 
 }

@@ -1,9 +1,12 @@
-package com.boivalenko.businessapp.web.app.service;
+package com.boivalenko.businessapp.web.app.spring.service;
 
-import com.boivalenko.businessapp.web.app.entities.Book;
-import com.boivalenko.businessapp.web.app.repository.BookRepository;
+import com.boivalenko.businessapp.web.app.spring.entities.Book;
+import com.boivalenko.businessapp.web.app.spring.repository.BookRepository;
 import com.boivalenko.businessapp.web.base.IBaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -111,5 +114,9 @@ public class BookService implements IBaseService<Book> {
                     HttpStatus.OK);
         }
         return ResponseEntity.ok(all);
+    }
+
+    public Page<Book> findAllWithoutContent(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection) {
+         return this.bookRepository.findAllWithoutContent(PageRequest.of(pageNumber, pageSize, Sort.by(sortDirection, sortField)));
     }
 }

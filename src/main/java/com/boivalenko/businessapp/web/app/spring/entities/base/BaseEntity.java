@@ -1,4 +1,4 @@
-package com.boivalenko.businessapp.web.app.entities.base;
+package com.boivalenko.businessapp.web.app.spring.entities.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

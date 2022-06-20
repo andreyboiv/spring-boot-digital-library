@@ -1,4 +1,4 @@
-package com.boivalenko.businessapp.web.app.controller;
+package com.boivalenko.businessapp.web.app.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,6 @@ public class RedirectController {
 
     @GetMapping
     public String baseUrlRedirect(HttpServletRequest request, HttpServletResponse response) {
-        return "redirect:" + request.getRequestURL().append("index.xhtml").toString();
+        return "redirect:" + request.getRequestURL().append("books.xhtml").toString();
     }
 }

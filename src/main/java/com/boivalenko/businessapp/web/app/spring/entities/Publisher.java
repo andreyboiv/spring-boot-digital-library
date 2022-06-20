@@ -1,6 +1,6 @@
-package com.boivalenko.businessapp.web.app.entities;
+package com.boivalenko.businessapp.web.app.spring.entities;
 
-import com.boivalenko.businessapp.web.app.entities.base.BaseEntity;
+import com.boivalenko.businessapp.web.app.spring.entities.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

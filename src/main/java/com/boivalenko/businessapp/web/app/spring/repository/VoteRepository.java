@@ -1,6 +1,6 @@
-package com.boivalenko.businessapp.web.app.repository;
+package com.boivalenko.businessapp.web.app.spring.repository;
 
-import com.boivalenko.businessapp.web.app.entities.Vote;
+import com.boivalenko.businessapp.web.app.spring.entities.Vote;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

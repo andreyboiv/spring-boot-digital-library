@@ -1,8 +1,8 @@
-package com.boivalenko.businessapp.web.app.controller;
+package com.boivalenko.businessapp.web.app.spring.controller;
 
-import com.boivalenko.businessapp.web.app.entities.Book;
-import com.boivalenko.businessapp.web.app.search.BookSearchValues;
-import com.boivalenko.businessapp.web.app.service.BookService;
+import com.boivalenko.businessapp.web.app.spring.entities.Book;
+import com.boivalenko.businessapp.web.app.spring.search.BookSearchValues;
+import com.boivalenko.businessapp.web.app.spring.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/book")
 @RequiredArgsConstructor
-public class BookController {
+public class SpringBookController {
 
     private final BookService bookService;
 

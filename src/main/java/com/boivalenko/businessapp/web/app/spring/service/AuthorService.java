@@ -1,7 +1,7 @@
-package com.boivalenko.businessapp.web.app.service;
+package com.boivalenko.businessapp.web.app.spring.service;
 
-import com.boivalenko.businessapp.web.app.entities.Author;
-import com.boivalenko.businessapp.web.app.repository.AuthorRepository;
+import com.boivalenko.businessapp.web.app.spring.entities.Author;
+import com.boivalenko.businessapp.web.app.spring.repository.AuthorRepository;
 import com.boivalenko.businessapp.web.base.IBaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

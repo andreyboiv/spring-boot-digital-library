@@ -1,7 +1,7 @@
-package com.boivalenko.businessapp.web.app.controller;
+package com.boivalenko.businessapp.web.app.spring.controller;
 
-import com.boivalenko.businessapp.web.app.entities.Author;
-import com.boivalenko.businessapp.web.app.service.AuthorService;
+import com.boivalenko.businessapp.web.app.spring.entities.Author;
+import com.boivalenko.businessapp.web.app.spring.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

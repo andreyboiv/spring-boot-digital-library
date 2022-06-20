@@ -1,4 +1,4 @@
-package com.boivalenko.businessapp.web.app.search;
+package com.boivalenko.businessapp.web.app.spring.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

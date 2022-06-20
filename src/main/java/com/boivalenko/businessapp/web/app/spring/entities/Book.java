@@ -1,4 +1,4 @@
-package com.boivalenko.businessapp.web.app.entities;
+package com.boivalenko.businessapp.web.app.spring.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
