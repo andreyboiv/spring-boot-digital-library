@@ -6,7 +6,7 @@ Spring Boot Version: 2.7.0
 <p>
 Java Version: 11
 <p>
-Datenbank: PostgreSQL
+Datenbank: MySQL
 <p>
   
 <b>Backend Components (Dependencies):</b>
