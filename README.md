@@ -17,9 +17,13 @@ Datenbank: PostgreSQL
 5. MySQL Driver
 6. Lombok
 7. Maven
-8. JSF (Primefaces & Bootsfaces)
+  
+<b>Frontend Components (Dependencies):</b>
+1. JSF (Primefaces & Bootsfaces)
 
   <p>
+    
 ![alt text](https://boivalenko.com/img/java_ep/spring/projekt_3/online_library_1.jpg?raw=true)  
-  <p>
+  
+<p>
   <p>
