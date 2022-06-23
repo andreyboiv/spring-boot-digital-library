@@ -69,18 +69,34 @@
         <dependency>
             <groupId>org.joinfaces</groupId>
             <artifactId>primefaces-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>4.1.13</version>
         </dependency>
         <dependency>
             <groupId>org.joinfaces</groupId>
             <artifactId>bootsfaces-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>4.1.13</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
+            <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/pdf-js -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>pdf-js</artifactId>
+            <version>2.9.359</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
+
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -88,6 +104,19 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+    <repository>
+        <id>sonatype-snapshots</id>
+        <name>Sonatype Snapshot Repository</name>
+        <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+    </repositories>
 
     <build>
         <plugins>

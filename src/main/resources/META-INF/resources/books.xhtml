@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<h:body>
+    <ui:composition template="/templates/books/books-template.xhtml">
+        <ui:define name="content">
+
+            <h:form id="booksForm">
+
+
+                <p:dataGrid id="booksList" var="book" value="#{bookController.lazyModel}" columns="5"
+                            paginatorPosition="bottom"
+                            paginator="true"
+                            rows="#{bookController.rowsCount}"
+                            emptyMessage=""
+                            rowIndexVar="rowIndexVar"
+                            rowsPerPageTemplate="5,10,15,30"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            lazy="true">
+
+                    <!-- Die Karte mit Daten eines Büchers -->
+                    <p:outputPanel styleClass="card">
+
+
+                        <div class="book-icon">
+                            <h:graphicImage cache="false" value="data:image/jpeg;base64,#{book.imageAsString}" dataURI="true"/>
+                        </div>
+
+                        <!-- Buchumschlag -->
+                        <div class="book-info">
+                            <div class="author">
+                                <h:outputText value="#{book.author.name}" styleClass="author"/>
+                            </div>
+
+                            <!-- Der Teil unten im Bild -->
+                            <div class="add-info">
+                                <div style="width:10%; float:left;">
+                                    <h:graphicImage name="images/see.png" styleClass="see-count"/>
+                                </div>
+
+                                <!-- Anzahl der Aufrufe -->
+                                <div style="width:20%; float:left; margin-left: 10px; font-size: 14px;">
+                                    <h:outputText value="#{book.viewCount}" styleClass="view-count" id="viewCountLabel"/>
+                                </div>
+
+                                <!-- Abstimmung -->
+                                <div style="width:60%; float:right;">
+                                    <p:rating id="rating" value="#{book.avgRating}" styleClass="rating" cancel="false" stars="5">
+                                    </p:rating>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Admin Panel -->
+                        <p:outputPanel layout="block" styleClass="admin-region" >
+                            <p:commandLink title="Löschen">
+                                <h:graphicImage name="images/delete.png" styleClass="delete-icon" dataURI="true"/>
+                            </p:commandLink>
+
+                            <p:commandLink title="Ändern">
+                                <h:graphicImage name="images/edit.png" styleClass="edit-icon" dataURI="true"/>
+                            </p:commandLink>
+                        </p:outputPanel>
+
+                    </p:outputPanel>
+                </p:dataGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>

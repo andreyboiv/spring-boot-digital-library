@@ -4,11 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.codec.binary.Base64;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import javax.persistence.*;
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -33,6 +37,23 @@ public class Book implements Serializable {
     @Lob
     @JsonIgnore
     private byte[] image;
+
+    @Transient
+    private StreamedContent streamedContentImage;
+
+    @Transient
+    private String imageAsString;
+
+    public void setImageAsStreamedContent() {
+        this.streamedContentImage = new DefaultStreamedContent(
+                new ByteArrayInputStream(image),
+                "image/jpeg",
+                name);
+    }
+
+    public void setImageAsString() {
+        this.imageAsString = Base64.encodeBase64String(this.image);
+    }
 
     public Book(Long id, byte[] image) {
         this.id = id;
