@@ -13,6 +13,13 @@ Datenbank: PostgreSQL
 1. Spring Boot DevTools
 2. Spring Web
 3. Spring Data JPA
-4. MySQL Driver
-5. Lombok
-6. Maven
+4. Spring Security
+5. MySQL Driver
+6. Lombok
+7. Maven
+8. JSF (Primefaces & Bootsfaces)
+
+  <p>
+![alt text](https://boivalenko.com/img/java_ep/spring/projekt_3/online_library_1.jpg?raw=true)  
+  <p>
+  <p>
