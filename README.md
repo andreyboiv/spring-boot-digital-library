@@ -25,7 +25,7 @@ Datenbank: MySQL
       <p>
           <p>
     
-![alt text](https://boivalenko.com/img/java_ep/spring/projekt_3/online_library_1.jpg?raw=true)  
+![alt text](https://boivalenko.com/img/java_ep/spring/projekt_3/online_library_2.jpg?raw=true)  
   
 <p>
   <p>
