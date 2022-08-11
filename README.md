@@ -16,7 +16,7 @@ Datenbank: MySQL
 4. Spring Security
 5. MySQL Driver
 6. Lombok
-7. Maven
+7. Gradle 7.5.1
   
 <b>Frontend Components (Dependencies):</b>
 1. JSF (Primefaces & Bootsfaces)

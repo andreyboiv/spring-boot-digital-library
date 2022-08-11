@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.5.0.3"
+    id 'war'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-aop:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.7.0'
+    runtimeOnly 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.0'
+    implementation 'commons-codec:commons-codec:1.15'
+    implementation 'commons-fileupload:commons-fileupload:1.4'
+    implementation 'org.joinfaces:primefaces-spring-boot-starter:4.1.13'
+    implementation 'org.joinfaces:bootsfaces-spring-boot-starter:4.1.13'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.7.0'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.29'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+    providedCompile 'javax:javaee-api:8.0.1'
+    implementation 'org.glassfish.web:el-impl:2.2'
+}
+
+group = 'com.boivalenko.businessapp.web'
+version = '0.0.1-SNAPSHOT'
+description = 'digitale_bibliothek'
+java.sourceCompatibility = JavaVersion.VERSION_11
+java.targetCompatibility = JavaVersion.VERSION_11
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
