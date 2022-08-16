@@ -16,17 +16,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GenreService implements IBaseService<Genre> {
 
+    public static final String GAR_KEIN_GENRE_VORHANDEN = "gar kein Genre vorhanden";
+    public static final String ID_WIRD_AUTOMATISCH_GENERIERT_MAN_MUSS_DAS_NICHT_EINGEBEN = "ID wird automatisch generiert. Man muss das nicht eingeben";
+    public static final String NAME_DARF_WEDER_NULL_NOCH_LEER_SEIN = "NAME darf weder NULL noch leer sein";
+    public static final String GENRE_DARF_NICHT_NULL_SEIN = "Genre darf nicht null sein";
+    public static final String ID_DARF_WEDER_NULL_NOCH_0_SEIN = "ID darf weder NULL noch 0 sein";
     private final GenreRepository genreRepository;
 
     @Override
     public ResponseEntity<Genre> save(Genre genre) {
-        if (genre.getId() != null) {
-            return new ResponseEntity("ID wird automatisch generiert. Man muss das nicht eingeben",
+        if (genre == null) {
+            return new ResponseEntity(GENRE_DARF_NICHT_NULL_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
-        if (genre.getName().isEmpty() || genre.getName().toLowerCase().contains("null")) {
-            return new ResponseEntity("NAME darf weder NULL noch leer sein",
+        if (genre.getId() != null) {
+            return new ResponseEntity(ID_WIRD_AUTOMATISCH_GENERIERT_MAN_MUSS_DAS_NICHT_EINGEBEN,
+                    HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if (genre.getName() == null || genre.getName().isEmpty() || genre.getName().toLowerCase().contains("null")) {
+            return new ResponseEntity(NAME_DARF_WEDER_NULL_NOCH_LEER_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
@@ -35,19 +45,24 @@ public class GenreService implements IBaseService<Genre> {
 
     @Override
     public ResponseEntity<Genre> update(Genre genre) {
-        if (genre.getId() == null || genre.getId() == 0) {
-            return new ResponseEntity("ID darf weder NULL noch 0 sein",
+        if (genre == null) {
+            return new ResponseEntity(GENRE_DARF_NICHT_NULL_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
-        if (genre.getName().isEmpty() || genre.getName().toLowerCase().contains("null")) {
-            return new ResponseEntity("NAME darf weder NULL noch leer sein",
+        if (genre.getId() == null || genre.getId() == 0) {
+            return new ResponseEntity(ID_DARF_WEDER_NULL_NOCH_0_SEIN,
+                    HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if (genre.getName() == null || genre.getName().isEmpty() || genre.getName().toLowerCase().contains("null")) {
+            return new ResponseEntity(NAME_DARF_WEDER_NULL_NOCH_LEER_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
         if (this.genreRepository.existsById(genre.getId()) == false) {
             return new ResponseEntity("ID=" + genre.getId() + " nicht gefunden",
-                    HttpStatus.NOT_ACCEPTABLE);
+                    HttpStatus.OK);
         }
 
         return ResponseEntity.ok(this.genreRepository.save(genre));
@@ -55,8 +70,8 @@ public class GenreService implements IBaseService<Genre> {
 
     @Override
     public ResponseEntity<Genre> deleteById(Long id) {
-        if (id == 0) {
-            return new ResponseEntity("ID darf nicht 0 sein",
+        if (id == null || id == 0) {
+            return new ResponseEntity(ID_DARF_WEDER_NULL_NOCH_0_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
@@ -71,14 +86,14 @@ public class GenreService implements IBaseService<Genre> {
 
     @Override
     public ResponseEntity<Genre> findById(Long id) {
-        if (id == 0) {
-            return new ResponseEntity("ID darf nicht 0 sein",
+        if (id == null || id == 0) {
+            return new ResponseEntity(ID_DARF_WEDER_NULL_NOCH_0_SEIN,
                     HttpStatus.NOT_ACCEPTABLE);
         }
 
         if (this.genreRepository.existsById(id) == false) {
             return new ResponseEntity("ID=" + id + " nicht gefunden",
-                    HttpStatus.NOT_ACCEPTABLE);
+                    HttpStatus.OK);
         }
 
         Genre genre = this.genreRepository.findById(id).get();
@@ -89,7 +104,7 @@ public class GenreService implements IBaseService<Genre> {
     public ResponseEntity<List<Genre>> findAll() {
         List<Genre> all = this.genreRepository.findAll();
         if (all == null || all.isEmpty()) {
-            return new ResponseEntity("gar kein Genre vorhanden",
+            return new ResponseEntity(GAR_KEIN_GENRE_VORHANDEN,
                     HttpStatus.OK);
         }
         return ResponseEntity.ok(all);
@@ -98,9 +113,10 @@ public class GenreService implements IBaseService<Genre> {
     public ResponseEntity<List<Genre>> findGenresByNameContainingIgnoreCaseOrderByNameAsc(String name) {
         List<Genre> all = this.genreRepository.findGenresByNameContainingIgnoreCaseOrderByNameAsc(name);
         if (all == null || all.isEmpty()) {
-            return new ResponseEntity("gar kein Genre vorhanden",
+            return new ResponseEntity(GAR_KEIN_GENRE_VORHANDEN,
                     HttpStatus.OK);
         }
         return ResponseEntity.ok(all);
     }
+
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,12 +32,22 @@ public class GenreController {
     }
 
     @PostMapping("/findById")
-    public ResponseEntity<Genre> findById(@RequestBody Long id) {
+    public ResponseEntity<Genre> findById(@Valid @RequestBody Long id) {
+        return this.genreService.findById(id);
+    }
+
+    @GetMapping("/findByIdGet/{id}")
+    public ResponseEntity<Genre> findByIdGet(@PathVariable("id") Long id) {
         return this.genreService.findById(id);
     }
 
     @PostMapping("/findAll")
     public ResponseEntity<List<Genre>> findAll() {
+        return this.genreService.findAll();
+    }
+
+    @GetMapping("/findAllGet")
+    public ResponseEntity<List<Genre>> findAllGet() {
         return this.genreService.findAll();
     }
 
