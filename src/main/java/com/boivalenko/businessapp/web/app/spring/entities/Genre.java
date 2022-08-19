@@ -1,7 +1,6 @@
 package com.boivalenko.businessapp.web.app.spring.entities;
 
 import com.boivalenko.businessapp.web.app.spring.entities.base.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +28,6 @@ public class Genre extends BaseEntity {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
     private List<Book> books;
 
